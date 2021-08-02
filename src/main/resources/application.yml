@@ -3,3 +3,5 @@ spring:
     name: tact-id
 server:
   port: 10001
+  servlet:
+    context-path: /tact_id
