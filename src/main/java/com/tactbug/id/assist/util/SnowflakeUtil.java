@@ -3,6 +3,9 @@ package com.tactbug.id.assist.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class SnowflakeUtil {
 
@@ -20,7 +23,7 @@ public class SnowflakeUtil {
 
     public SnowflakeUtil(long workId) {
         if (workId > MAX_WORK_NUM || workId < 0) {
-            throw new IllegalArgumentException("datacenterId can't be greater than MAX_DATACENTER_NUM or less than 0");
+            throw new IllegalArgumentException("datacenterId can't be greater than MAX_WORK_NUM or less than 0");
         }
         this.workId = workId;
     }
@@ -55,12 +58,12 @@ public class SnowflakeUtil {
     /**
      * 指定时间戳产生下一群ID
      */
-    private List<Long> nextIdsInTime(long currentTime, Integer times) {
-        List<Long> result  = new ArrayList<>();
+    private Queue<Long> nextIdsInTime(long currentTime, Integer times) {
+        Queue<Long> result  = new ConcurrentLinkedQueue<>();
         for (int i = 0; i < times; i++) {
-            long currStmp = currentTime + i;
+            long currentTimestamp = currentTime + i;
             for (int j = 0; j < 4000; j++) {
-                Long id =  (currStmp - START_STMP) << TIMESTMP_LEFT
+                Long id =  (currentTimestamp - START_STMP) << TIMESTMP_LEFT
                         | workId << WORK_LEFT
                         | j;
                 result.add(id);
@@ -72,10 +75,10 @@ public class SnowflakeUtil {
     /**
      * 指定数量产生下一群ID
      */
-    public synchronized List<Long> nextIdsInQuantity(long currentTime, Integer quantity) {
+    public synchronized Queue<Long> nextIdsInQuantity(long currentTime, Integer quantity) {
         int times = quantity / 4000;
         int remainder = quantity % 4000;
-        List<Long> result = new ArrayList<>(nextIdsInTime(currentTime, times));
+        ConcurrentLinkedQueue<Long> result = new ConcurrentLinkedQueue<>(nextIdsInTime(currentTime, times));
         for (int i = 0; i < remainder; i++) {
             result.add(nextId(currentTime + 1000L));
         }

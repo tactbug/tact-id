@@ -3,5 +3,3 @@ spring:
     name: tact-id
 server:
   port: 10001
-environment:
-  core: {$CORE: 4}

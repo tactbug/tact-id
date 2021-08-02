@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Queue;
 
 @RestController
 @RequestMapping("/snowflake")
@@ -18,13 +18,13 @@ public class IdHttpController {
     private IdService idService;
 
     @GetMapping("/batch/{application}/{domain}/{quantity}")
-    public Result<List<Long>> getBatchIds(
+    public Result<Queue<Long>> getBatchIds(
             @PathVariable String application,
             @PathVariable String domain,
             @PathVariable String quantity
     ){
         int i = Integer.parseInt(quantity);
-        List<Long> snowflakeId = idService.getSnowflakeId(application, domain, i);
+        Queue<Long> snowflakeId = idService.getSnowflakeId(application, domain, i);
         return Result.success(snowflakeId);
     }
 }

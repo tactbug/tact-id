@@ -45,7 +45,7 @@ public class DomainSequence {
         return sequence;
     }
 
-    private Integer generate(){
+    private synchronized Integer generate(){
         if (sequenceMap.isEmpty()){
             sequenceMap.put(1, IN_USE);
             return 1;
