@@ -8,7 +8,7 @@ public class Result<T> {
     private Integer code;
     private String info;
     private Boolean success;
-    private T t;
+    private T data;
 
     public static <T> Result<T> success(){
         Result<T> result = new Result<>();
@@ -23,7 +23,7 @@ public class Result<T> {
         result.setCode(10000);
         result.setSuccess(true);
         result.setInfo("成功");
-        result.setT(t);
+        result.setData(t);
         return result;
     }
 

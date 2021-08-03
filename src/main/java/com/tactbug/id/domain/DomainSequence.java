@@ -32,9 +32,11 @@ public class DomainSequence {
         updateTime = ZonedDateTime.now();
     }
 
-    public void init(){
-        sequenceMap.clear();
-        updateTime = ZonedDateTime.now();
+    public synchronized void init(){
+        if (!sequenceMap.isEmpty()){
+            sequenceMap.clear();
+            updateTime = ZonedDateTime.now();
+        }
     }
 
     public Integer getCurrentSequence(){

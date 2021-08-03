@@ -30,7 +30,6 @@ public class IdServiceImpl implements IdService {
 
     @Scheduled(cron = "*/5 * * * * ?")
     public void initDomainSequence(){
-        System.out.println("start init ~~~");
         SEQUENCE_SLEEP_TIME.forEach((domainSequence, time) -> {
             if (System.currentTimeMillis() - time > 2 * 1000) {
                 domainSequence.init();
