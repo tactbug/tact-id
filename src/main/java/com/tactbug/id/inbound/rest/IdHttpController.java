@@ -18,13 +18,12 @@ public class IdHttpController {
     private IdService idService;
 
     @GetMapping("/batch/{application}/{domain}/{quantity}")
-    public Result<Queue<Long>> getBatchIds(
+    public Queue<Long> getBatchIds(
             @PathVariable String application,
             @PathVariable String domain,
             @PathVariable String quantity
     ){
         int i = Integer.parseInt(quantity);
-        Queue<Long> snowflakeId = idService.getSnowflakeId(application, domain, i);
-        return Result.success(snowflakeId);
+        return idService.getSnowflakeId(application, domain, i);
     }
 }
