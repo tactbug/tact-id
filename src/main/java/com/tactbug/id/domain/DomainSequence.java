@@ -66,6 +66,6 @@ public class DomainSequence {
             sequenceMap.put(nextSequence, IN_USE);
             return nextSequence;
         }
-        return -1;
+        return FAIL_TAG;
     }
 }
