@@ -1,7 +1,7 @@
 spring:
   application:
     name: tact-id
+  webflux:
+    base-path: /id
 server:
   port: 10001
-  servlet:
-    context-path: /tact_id
