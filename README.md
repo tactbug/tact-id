@@ -4,7 +4,7 @@
 
 ## 构建
 - 环境
-  - jdk: openJDK 11
+  - jdk: oracle java17
     
   - maven 3.6.1
 
@@ -16,14 +16,14 @@
 
 `java -jar XXX.jar`
 
-> 构建过程会对ID并发生成执行一次单元测试, 可能会等待30-60左右
+> 构建过程会对ID并发生成执行一次单元测试, 可能会等待5-10s左右
 
 
 ## REST 接口
 
 ### getSnowFlakeId
 - 说明: 根据服务名跟聚合名批量获取snowflakeID
-- url: /tact_id/snowflake/batch/{application}/{domain}/{quantity}
+- url: /id/snowflake/batch/{application}/{domain}/{quantity}
 - 方法: GET
 - 参数
   - application: 服务名
