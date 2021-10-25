@@ -1,6 +1,6 @@
 # tact-id
 一个给分布式服务生成全局snowflakeID的服务
-不建议集群部署, 可以考虑主备运行, 压力实在大可以通过gateway将指定domain路由到指定服务
+有状态服务, 不建议集群部署, 可以考虑主备运行, 压力实在大可以使用分片技术执行
 
 ## 构建
 - 环境
@@ -21,9 +21,9 @@
 
 ## REST 接口
 
-### getSnowFlakeId
+### getBatchId
 - 说明: 根据服务名跟聚合名批量获取snowflakeID
-- url: /id/snowflake/batch/{application}/{domain}/{quantity}
+- url: /id/batch/{application}/{domain}/{quantity}
 - 方法: GET
 - 参数
   - application: 服务名
