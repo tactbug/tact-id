@@ -1,8 +1,8 @@
-package com.tactbug.id.service.impl;
+package com.tactbug.id.server.service.impl;
 
-import com.tactbug.id.assist.util.SnowflakeUtil;
-import com.tactbug.id.domain.DomainSequence;
-import com.tactbug.id.service.IdService;
+import com.tactbug.id.server.assist.util.SnowflakeUtil;
+import com.tactbug.id.server.domain.DomainSequence;
+import com.tactbug.id.server.service.IdService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,8 @@ public class IdServiceImpl implements IdService {
 
     @Override
     public Queue<Long> getSnowflakeId(String applicationName, String aggregateName, Integer quantity) {
-        if (quantity > 300000 || quantity < 10000){
-            throw new IllegalArgumentException("每个主体每次请求ID数不能大于300,000个或是小于10,000个");
+        if (quantity > 300000){
+            throw new IllegalArgumentException("每个主体每次请求ID数不能大于300,000个");
         }
         DomainSequence domainSequence = new DomainSequence(applicationName, aggregateName);
         String mapKey = applicationName + ":" + aggregateName;

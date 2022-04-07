@@ -1,4 +1,4 @@
-package com.tactbug.id.assist.util;
+package com.tactbug.id.server.assist.util;
 
 
 import java.util.ArrayList;

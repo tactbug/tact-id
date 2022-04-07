@@ -1,6 +1,7 @@
-package com.tactbug.id.inbound.rest;
+package com.tactbug.id.server.inbound.rest;
 
-import com.tactbug.id.service.IdService;
+import com.tactbug.id.server.service.IdService;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ public class IdServerController {
     public Mono<Queue<Long>> snowflakeBatch(
             @PathVariable("application") String application,
             @PathVariable("aggregate") String aggregate,
-            @PathVariable("quantity") Integer quantity
+            @PathVariable("quantity") @DefaultValue("10000") Integer quantity
     ){
         return Mono.just(idService.getSnowflakeId(application, aggregate, quantity));
     }
@@ -33,4 +34,5 @@ public class IdServerController {
     public Mono<String> hello(){
         return Mono.just("hello");
     }
+
 }

@@ -1,4 +1,4 @@
-package com.tactbug.id.domain;
+package com.tactbug.id.server.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

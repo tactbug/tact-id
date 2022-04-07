@@ -1,6 +1,6 @@
-package com.tactbug.id.service;
+package com.tactbug.id.server.service;
 
-import com.tactbug.id.domain.DomainSequence;
+import com.tactbug.id.server.domain.DomainSequence;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,16 +1,10 @@
-package com.tactbug.id.service.impl;
+package com.tactbug.id.server.service.impl;
 
-import com.tactbug.id.service.IdService;
+import com.tactbug.id.server.service.IdService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
-import javax.annotation.Resource;
 
 import java.util.Queue;
 import java.util.concurrent.*;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class IdServiceImplTest {
