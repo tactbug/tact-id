@@ -6,7 +6,7 @@ public class IdFactory {
 
     private final ConcurrentHashMap<String, IdGenerator> ID_GENERATOR_MAP = new ConcurrentHashMap<>();
 
-    public IdGenerator getGenerator(
+    public IdGenerator getOrBuildGenerator(
             String host,
             Integer port,
             String service,

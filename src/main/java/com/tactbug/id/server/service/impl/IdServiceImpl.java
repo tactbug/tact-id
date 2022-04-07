@@ -16,6 +16,9 @@ public class IdServiceImpl implements IdService {
         if (quantity > 300000){
             throw new IllegalArgumentException("每个主体每次请求ID数不能大于300,000个");
         }
+        if (quantity < 1){
+            quantity = 10000;
+        }
         DomainSequence domainSequence = new DomainSequence(applicationName, aggregateName);
         String mapKey = applicationName + ":" + aggregateName;
         DOMAIN_SEQUENCE_MAP.putIfAbsent(mapKey, domainSequence);
