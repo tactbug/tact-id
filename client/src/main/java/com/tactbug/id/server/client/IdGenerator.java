@@ -17,6 +17,8 @@ public class IdGenerator {
     private Integer quantity;
     private volatile PriorityBlockingQueue<Long> idQueue;
 
+    protected IdGenerator(){}
+
     public static IdGenerator build(String host, Integer port, String service, String domain, Integer quantity){
         IdGenerator idGenerator = new IdGenerator();
         if (Objects.isNull(quantity) || quantity.compareTo(1) < 0){
