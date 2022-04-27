@@ -72,7 +72,7 @@ public class IdGenerator {
         return baseUrl;
     }
 
-    public void setBaseUrl(String baseUrl) {
+    private void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
@@ -80,15 +80,11 @@ public class IdGenerator {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    private void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public PriorityBlockingQueue<Long> getIdQueue() {
-        return idQueue;
-    }
-
-    public void setIdQueue(PriorityBlockingQueue<Long> idQueue) {
+    private void setIdQueue(PriorityBlockingQueue<Long> idQueue) {
         this.idQueue = idQueue;
     }
 }
