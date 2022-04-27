@@ -45,7 +45,7 @@ public class IdGenerator {
         return id;
     }
 
-    public synchronized void supplement(){
+    protected synchronized void supplement(){
         HttpClient httpClient = HttpClient.newHttpClient();
         int supplement = quantity - idQueue.size();
         String url = baseUrl + "/" + supplement;
