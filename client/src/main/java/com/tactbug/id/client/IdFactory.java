@@ -1,4 +1,4 @@
-package com.tactbug.id.server.client;
+package com.tactbug.id.client;
 
 import java.util.concurrent.ConcurrentHashMap;
 
