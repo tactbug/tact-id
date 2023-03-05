@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode(exclude = {"sequenceMap", "createTime", "updateTime"})
@@ -14,11 +13,9 @@ public class DomainSequence {
 
     private String applicationName;
     private String domainName;
-    private volatile ConcurrentHashMap<Integer, Integer> sequenceMap = new ConcurrentHashMap<>(MAX_SEQUENCE);
-
+    private ConcurrentHashMap<Integer, Integer> sequenceMap = new ConcurrentHashMap<>(MAX_SEQUENCE);
     private ZonedDateTime createTime;
     private volatile ZonedDateTime updateTime;
-
     private static final Integer MAX_SEQUENCE = 1023;
     private static final Integer IN_USE = 1;
     private static final Integer IDLE = 2;
@@ -53,7 +50,7 @@ public class DomainSequence {
             return 1;
         }
         int nextSequence = 1;
-        List<Integer> keyList = sequenceMap.keySet().stream().sorted().collect(Collectors.toList());
+        List<Integer> keyList = sequenceMap.keySet().stream().sorted().toList();
         for (int i = 1; i <= keyList.size(); i++) {
             if (sequenceMap.get(i).equals(IDLE)){
                 sequenceMap.put(i, IN_USE);
