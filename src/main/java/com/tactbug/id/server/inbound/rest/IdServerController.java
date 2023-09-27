@@ -1,13 +1,13 @@
 package com.tactbug.id.server.inbound.rest;
 
 import com.tactbug.id.server.service.IdService;
+import jakarta.annotation.Resource;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
 import java.util.Queue;
 
 /**

@@ -19,7 +19,7 @@ public class IdServiceImplTest {
         String applicationName = "tact-recycle";
         String domainName = "recycleGoods";
         Integer quantity = 15000;
-        int concurrent = 2;
+        int concurrent = 3;
         for (int i = 0; i < concurrent; i++) {
             int finalIndex = i;
             THREAD_POOL.execute(() -> {
