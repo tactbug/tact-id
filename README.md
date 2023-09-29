@@ -11,7 +11,7 @@
 
 ## 构建
 - 环境
-  - jdk: openjdk:17
+  - jdk: openjdk:21
   - maven 3.6.1
 
 `git clone https://github.com/tactbug/tact-id.git`
